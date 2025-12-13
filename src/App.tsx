@@ -11,12 +11,14 @@ const Loading = () => (
   <div
     style={{
       display: 'flex',
+      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
       minHeight: '400px',
     }}
   >
-    <Spin size="large" tip="加载中..." />
+    <Spin size="large" />
+    <span style={{ marginTop: '12px', color: 'rgba(0, 0, 0, 0.65)' }}>加载中...</span>
   </div>
 )
 

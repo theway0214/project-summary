@@ -24,7 +24,7 @@
   background: #fff;
   border-radius: 8px 8px 0 0;
   transition: all 0.3s ease;
-}
+  }
 
 .page-title {
   font-size: 20px;
@@ -45,12 +45,12 @@
   .content-wrapper {
     border-radius: 0;
     margin: 0;
-  }
+}
 
   .page-header {
     padding: 16px;
     border-radius: 0;
-  }
+}
 
   .page-content {
     padding: 16px;
