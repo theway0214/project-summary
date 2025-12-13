@@ -6,6 +6,14 @@ import * as echarts from 'echarts'
 import type { EChartsOption, ECharts } from 'echarts'
 import { tooltipDataMap } from './tooltipMap'
 import { createTooltipContainer } from './tooltipUtils'
+import {
+  defaultTooltipConfig,
+  defaultXAxisConfig,
+  defaultYAxisConfig,
+  defaultGridConfig,
+  defaultLegendConfig,
+  defaultTextStyle,
+} from './config'
 import './index.css'
 
 export interface ChartProps {
@@ -62,95 +70,6 @@ const Chart = forwardRef<ChartRef, ChartProps>(
     const resizeObserverRef = useRef<ResizeObserver | null>(null)
     const resizeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
     const [hasShownData, setHasShownData] = useState(false)
-
-    // 默认的 tooltip 配置
-    const defaultTooltipConfig = {
-      trigger: 'axis' as const,
-      axisPointer: {
-        type: 'none' as const,
-      },
-      backgroundColor: 'transparent',
-      borderWidth: 0,
-      padding: 0,
-    }
-
-    // 默认的 x 轴配置
-    const defaultXAxisConfig = {
-      type: 'category' as const,
-      axisLine: {
-        lineStyle: {
-          width: 1,
-          color: 'rgba(255, 255, 255, 0.3)',
-        },
-      },
-      axisTick: {
-        show: false,
-      },
-      axisLabel: {
-        interval: 0,
-        color: 'rgba(255, 255, 255, 0.7)',
-        fontSize: 14,
-        padding: 8,
-      },
-      splitLine: {
-        show: false,
-      },
-    }
-
-    // 默认的 y 轴配置
-    const defaultYAxisConfig = {
-      nameGap: 30,
-      axisLine: {
-        show: true,
-        lineStyle: {
-          width: 1,
-          color: 'rgba(255, 255, 255, 0.3)',
-        },
-      },
-      nameTextStyle: {
-        fontSize: 14,
-        color: '#FFFFFF',
-      },
-      axisLabel: {
-        fontSize: 14,
-        color: 'rgba(255, 255, 255, 0.7)',
-        padding: [0, 12, 0, 0],
-      },
-      splitLine: {
-        show: true,
-        showMinLine: false,
-        lineStyle: {
-          width: 1,
-          color: 'rgba(255, 255, 255, 0.2)',
-          type: 'dashed' as const,
-        },
-      },
-    }
-
-    // 默认的网格配置
-    const defaultGridConfig = {
-      top: '15%',
-      left: '5%',
-      right: '5%',
-      bottom: '8%',
-      containLabel: true,
-    }
-
-    // 默认的图例配置
-    const defaultLegendConfig = {
-      top: '8%',
-      right: '5%',
-      show: true,
-      icon: 'rich',
-      itemWidth: 14,
-      itemHeight: 14,
-      itemGap: 16,
-      textStyle: {
-        color: '#FFFFFF',
-        fontSize: 14,
-        padding: [0, 0, 0, 8],
-      },
-    }
 
     function mountVueTooltip() {
       if (!chartInstanceRef.current) return
@@ -209,22 +128,22 @@ const Chart = forwardRef<ChartRef, ChartProps>(
     }
 
     // 合并配置的辅助函数
-    const mergeConfig = (
-      defaultConfig: Record<string, unknown>,
-      userConfig: unknown
-    ): Record<string, unknown> | Record<string, unknown>[] => {
+    const mergeConfig = <T extends Record<string, unknown>>(
+      defaultConfig: T,
+      userConfig: T | T[] | undefined
+    ): T | T[] => {
       if (!userConfig) {
         return defaultConfig
       }
       if (Array.isArray(userConfig)) {
         return userConfig.map((config) => ({
           ...defaultConfig,
-          ...(config as Record<string, unknown>),
+          ...config,
         }))
       }
       return {
         ...defaultConfig,
-        ...(userConfig as Record<string, unknown>),
+        ...userConfig,
       }
     }
 
@@ -244,20 +163,16 @@ const Chart = forwardRef<ChartRef, ChartProps>(
 
       if (options) {
         const mergedOptions = {
-          textStyle: {
-            fontSize: 14,
-            fontFamily: 'OPPOSans-Regular',
-            color: '#FFFFFF',
-          },
+          textStyle: defaultTextStyle,
           ...options,
           tooltip: {
             ...defaultTooltipConfig,
             ...options.tooltip,
           },
-          xAxis: mergeConfig(defaultXAxisConfig, options.xAxis),
-          yAxis: mergeConfig(defaultYAxisConfig, options.yAxis),
-          grid: mergeConfig(defaultGridConfig, options.grid),
-          legend: mergeConfig(defaultLegendConfig, options.legend),
+          xAxis: mergeConfig(defaultXAxisConfig as Record<string, unknown>, options.xAxis as Record<string, unknown> | Record<string, unknown>[] | undefined) as EChartsOption['xAxis'],
+          yAxis: mergeConfig(defaultYAxisConfig as Record<string, unknown>, options.yAxis as Record<string, unknown> | Record<string, unknown>[] | undefined) as EChartsOption['yAxis'],
+          grid: mergeConfig(defaultGridConfig as Record<string, unknown>, options.grid as Record<string, unknown> | Record<string, unknown>[] | undefined) as EChartsOption['grid'],
+          legend: mergeConfig(defaultLegendConfig as Record<string, unknown>, options.legend as Record<string, unknown> | Record<string, unknown>[] | undefined) as EChartsOption['legend'],
         }
 
         chartInstanceRef.current.setOption(mergedOptions, {
@@ -331,20 +246,16 @@ const Chart = forwardRef<ChartRef, ChartProps>(
       }
 
       const mergedOptions = {
-        textStyle: {
-          fontSize: 14,
-          fontFamily: 'OPPOSans-Regular',
-          color: '#FFFFFF',
-        },
+        textStyle: defaultTextStyle,
         ...options,
         tooltip: {
           ...defaultTooltipConfig,
           ...options.tooltip,
         },
-        xAxis: mergeConfig(defaultXAxisConfig, options.xAxis),
-        yAxis: mergeConfig(defaultYAxisConfig, options.yAxis),
-        grid: mergeConfig(defaultGridConfig, options.grid),
-        legend: mergeConfig(defaultLegendConfig, options.legend),
+        xAxis: mergeConfig(defaultXAxisConfig as Record<string, unknown>, options.xAxis as Record<string, unknown> | Record<string, unknown>[] | undefined) as EChartsOption['xAxis'],
+        yAxis: mergeConfig(defaultYAxisConfig as Record<string, unknown>, options.yAxis as Record<string, unknown> | Record<string, unknown>[] | undefined) as EChartsOption['yAxis'],
+        grid: mergeConfig(defaultGridConfig as Record<string, unknown>, options.grid as Record<string, unknown> | Record<string, unknown>[] | undefined) as EChartsOption['grid'],
+        legend: mergeConfig(defaultLegendConfig as Record<string, unknown>, options.legend as Record<string, unknown> | Record<string, unknown>[] | undefined) as EChartsOption['legend'],
       }
 
       chartInstanceRef.current.setOption(mergedOptions, {
@@ -358,7 +269,6 @@ const Chart = forwardRef<ChartRef, ChartProps>(
           setHasShownData(true)
         }, 0)
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [options, noData, anchorMode, hasShownData])
 
     // 初始化图表和监听窗口/容器大小变化

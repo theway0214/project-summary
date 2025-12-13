@@ -107,15 +107,15 @@ function Container({
         >
           <div className="chart-editor-modal">
             <div className="chart-editor-left">
-              <div className="chart-editor-header">
+              {/* <div className="chart-editor-header">
                 <Button type="primary" onClick={handleRun} style={{ marginBottom: 16 }}>
                   运行
                 </Button>
-              </div>
+              </div> */}
               <TextArea
                 value={editorValue}
                 onChange={(e) => setEditorValue(e.target.value)}
-                rows={25}
+                rows={32}
                 style={{ fontFamily: 'monospace', fontSize: 12 }}
                 placeholder="请输入 ECharts 配置（JSON 格式）"
               />

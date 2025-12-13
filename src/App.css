@@ -5,12 +5,14 @@
 
 /* 内容区域样式 */
 .content-wrapper {
-  min-height: calc(100vh - 64px);
+  height: calc(100vh - 64px);
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .content-wrapper:hover {
