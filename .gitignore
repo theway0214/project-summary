@@ -29,3 +29,6 @@ dist-ssr
 
 # Build outputs
 *.tsbuildinfo
+
+# .claude
+.claude
