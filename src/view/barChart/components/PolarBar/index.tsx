@@ -88,6 +88,12 @@ export default function PolarBar() {
       polar: {
         radius: ['20%', '80%'],
       },
+      xAxis:{
+        show:false,
+      },
+      yAxis:{
+        show:false,
+      },
       series: [
         {
           type: 'bar',

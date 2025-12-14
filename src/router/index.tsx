@@ -1,4 +1,4 @@
-import { lazy } from 'react'
+import { lazy, type ReactNode, type LazyExoticComponent, type ComponentType } from 'react'
 import { createBrowserRouter } from 'react-router'
 import { HomeOutlined, BarChartOutlined } from '@ant-design/icons'
 import App from '../App'
@@ -6,13 +6,16 @@ import App from '../App'
 // 懒加载组件
 const Home = lazy(() => import('../view/home'))
 const BarChart = lazy(() => import('../view/barChart'))
+const LineChart = lazy(() => import('../view/lineChart'))
 
 // 路由菜单配置类型
 export interface RouteMenuConfig {
   path: string
   label: string
-  icon?: React.ReactNode
-  component: React.LazyExoticComponent<React.ComponentType<any>>
+  icon?: ReactNode
+  component: LazyExoticComponent<ComponentType<unknown>>
+
+  
   showInMenu?: boolean
   children?: RouteMenuConfig[]
 }
@@ -28,9 +31,16 @@ export const routeMenuConfig: RouteMenuConfig[] = [
   },
   {
     path: '/bar-chart',
-    label: '图表',
+    label: '柱状图',
     icon: <BarChartOutlined />,
     component: BarChart,
+    showInMenu: true,
+  },
+  {
+    path: '/line-chart',
+    label: '折线图',
+    icon: <BarChartOutlined />,
+    component: LineChart,
     showInMenu: true,
   },
 ]

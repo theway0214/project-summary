@@ -40,12 +40,16 @@ export default function BaseBar() {
 
     return {
       tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow',
+        },
         formatter: (params: CallbackDataParams | CallbackDataParams[]) => {
           const paramArray = Array.isArray(params) ? params : [params]
           const list: TooltipItem[] = paramArray.map((item) => {
-            const color = typeof item.color === 'string' 
-              ? item.color 
-              : (item.color as { colorStops?: Array<{ color: string }> })?.colorStops?.[0]?.color || '#396FBC'
+            const color = typeof item.color === 'string'
+              ? item.color
+              : (item.color as { colorStops?: Array<{ color: string }> })?.colorStops?.[0]?.color || '#5470C6'
             return {
               color,
               label: item.seriesName || '',
@@ -57,45 +61,26 @@ export default function BaseBar() {
         },
       },
       grid: {
-        left: '60px',
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
         top: '15%',
-        right: '50px',
-        bottom: '10%',
         containLabel: true,
       },
-      legend: [
-        {
-          show: false,
-          top: 40,
-          right: '15%',
-          itemWidth: 14,
-          itemHeight: 14,
-          itemGap: 16,
-          icon: 'rect',
-          textStyle: {
-            fontFamily: 'OPPOSans-Regular',
-            fontSize: 14,
-            color: '#FFFFFF',
-            padding: [0, 0, 0, 8],
-          },
-          data: ['基础负荷', '降温负荷'],
-        },
-      ],
+      legend: {
+        show: false,
+      },
       xAxis: {
         type: 'category',
         data: data.map((item) => item.data_time + '年'),
         axisLine: {
-          show: true,
           lineStyle: {
-            width: 1,
             color: 'rgba(255, 255, 255, 0.3)',
           },
         },
         axisLabel: {
           color: 'rgba(255, 255, 255, 0.7)',
-          fontSize: 14,
-          fontFamily: 'OPPOSans-Medium',
-          padding: [8, 0, 0, 0],
+          fontSize: 12,
         },
         axisTick: {
           show: false,
@@ -109,32 +94,24 @@ export default function BaseBar() {
           axisLine: {
             show: true,
             lineStyle: {
-              width: 1,
               color: 'rgba(255, 255, 255, 0.3)',
             },
           },
           nameTextStyle: {
-            fontSize: 14,
-            fontFamily: 'OPPOSans-Regular',
-            color: '#FFFFFF',
-            padding: [0, 0, 0, 0],
+            fontSize: 12,
+            color: 'rgba(255, 255, 255, 0.7)',
           },
           axisLabel: {
             color: 'rgba(255, 255, 255, 0.7)',
-            fontSize: 14,
-            fontFamily: 'OPPOSans-Medium',
-            padding: [0, 12, 0, 0],
+            fontSize: 12,
             formatter: (value: number | string) => {
               const numValue = typeof value === 'number' ? value : parseFloat(value)
-              return `${numValue.toFixed(0)}.0`
+              return `${numValue.toFixed(0)}`
             },
           },
           splitLine: {
-            show: true,
-            showMinLine: false,
             lineStyle: {
               type: 'dashed',
-              width: 1,
               color: 'rgba(255, 255, 255, 0.2)',
             },
           },
@@ -146,105 +123,59 @@ export default function BaseBar() {
           type: 'bar',
           yAxisIndex: 0,
           data: data.map((item) => item.peak_valley_difference_rate),
-          color: '#396FBC',
           stack: '1',
           label: {
             show: true,
             position: 'top',
             color: '#FFFFFF',
-            fontSize: 14,
-            fontFamily: 'OPPOSans-Bold',
-            offset: [0, -8],
+            fontSize: 12,
+            offset: [0, -4],
             formatter: (params: CallbackDataParams) => {
               const dataValue = typeof params.data === 'number' ? params.data : 0
               return `${dataValue + stacking}`
             },
           },
           itemStyle: {
-            color: {
-              x: 0,
-              y: 0,
-              x2: 0,
-              y2: 1,
-              colorStops: [
-                {
-                  offset: 0,
-                  color: '#1D9FAA',
-                },
-                {
-                  offset: 1,
-                  color: 'rgba(31, 165, 120, 0)',
-                },
-              ],
-            },
+            color: '#5470C6',
+            borderRadius: [0, 0, 0, 0],
           },
-          barWidth: 40,
+          barWidth: '40%',
         },
         {
           name: '降温负荷',
           type: 'bar',
           yAxisIndex: 0,
           data: data.map(() => stacking),
-          color: '#2BAFD4',
           stack: '1',
           tooltip: {
             show: false,
           },
           label: {
             show: false,
-            position: 'top',
-            color: '#FFFFFF',
-            fontSize: 14,
-            fontFamily: 'OPPOSans-Bold',
-            fontWeight: 'bold',
-            offset: [0, 8],
           },
           itemStyle: {
-            color: '#fff',
+            color: '#91CC75',
+            borderRadius: [4, 4, 0, 0],
           },
-          barWidth: 40,
+          barWidth: '40%',
         },
         {
-          name: '基础负荷',
+          name: '背景',
           type: 'bar',
           yAxisIndex: 0,
           data: data.map(() => maxSum),
-          color: '#396FBC',
           tooltip: {
             show: false,
           },
           label: {
             show: false,
-            position: 'top',
-            color: '#FFFFFF',
-            fontSize: 14,
-            fontFamily: 'OPPOSans-Bold',
-            offset: [0, -8],
-            formatter: (params: CallbackDataParams) => {
-              const dataValue = typeof params.data === 'number' ? params.data : 0
-              return `${dataValue + stacking}`
-            },
           },
-          barGap: '-105%',
+          barGap: '-100%',
           itemStyle: {
-            color: {
-              x: 0,
-              y: 0,
-              x2: 0,
-              y2: 1,
-              colorStops: [
-                {
-                  offset: 0,
-                  color: 'rgba(107, 191, 237, 0.1)',
-                },
-                {
-                  offset: 1,
-                  color: 'rgba(255, 255, 255, 0)',
-                },
-              ],
-            },
+            color: 'rgba(255, 255, 255, 0.05)',
+            borderRadius: [4, 4, 0, 0],
           },
-          barWidth: 50,
+          barWidth: '40%',
         },
       ],
     }
