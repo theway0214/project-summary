@@ -1,32 +1,30 @@
 /**
- * 面积折线图组件（渐变填充）
+ * 排名柱状图组件
  * @author xhj
- * @since 2025-12-14
+ * @since 2025-12-15
  */
 import { useState, useEffect } from 'react'
 import Container from '@/components/Container'
 import Chart from '@/components/Chart'
-import type { ChartOption } from '@/components/Chart'
+import type { ChartProps } from '@/components/Chart'
 import { useChartOptions } from './useChartOptions'
 import { mockData } from './mockData'
 
-export default function AreaLine() {
+function RankBar() {
   const initialChartOptions = useChartOptions(mockData)
-  const [chartOptions, setChartOptions] = useState<ChartOption>(initialChartOptions)
+  const [chartOptions, setChartOptions] = useState<ChartProps['options']>(initialChartOptions)
 
   useEffect(() => {
     setChartOptions(initialChartOptions)
   }, [initialChartOptions])
 
-  const handleChartOptionsChange = (options: ChartOption | undefined) => {
-    if (options) {
-      setChartOptions(options)
-    }
+  const handleChartOptionsChange = (options: ChartProps['options']) => {
+    setChartOptions(options)
   }
 
   return (
     <Container
-      title="面积折线图"
+      title="排名柱状图"
       chartOptions={chartOptions}
       onChartOptionsChange={handleChartOptionsChange}
     >
@@ -34,3 +32,5 @@ export default function AreaLine() {
     </Container>
   )
 }
+
+export default RankBar

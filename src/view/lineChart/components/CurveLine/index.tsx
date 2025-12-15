@@ -1,22 +1,20 @@
 /**
- * 面积折线图组件（渐变填充）
+ * 曲线图组件
  * @author xhj
- * @since 2025-12-14
+ * @since 2025-12-15
  */
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Container from '@/components/Container'
 import Chart from '@/components/Chart'
 import type { ChartOption } from '@/components/Chart'
-import { useChartOptions } from './useChartOptions'
 import { mockData } from './mockData'
+import { useChartOptions } from './useChartOptions'
 
-export default function AreaLine() {
-  const initialChartOptions = useChartOptions(mockData)
+export default function CurveLine() {
+  const [data] = useState(mockData)
+
+  const initialChartOptions = useChartOptions(data)
   const [chartOptions, setChartOptions] = useState<ChartOption>(initialChartOptions)
-
-  useEffect(() => {
-    setChartOptions(initialChartOptions)
-  }, [initialChartOptions])
 
   const handleChartOptionsChange = (options: ChartOption | undefined) => {
     if (options) {
@@ -26,7 +24,7 @@ export default function AreaLine() {
 
   return (
     <Container
-      title="面积折线图"
+      title="曲线图"
       chartOptions={chartOptions}
       onChartOptionsChange={handleChartOptionsChange}
     >

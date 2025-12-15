@@ -41,7 +41,7 @@ interface SeriesOption {
   [key: string]: unknown
 }
 
-type ChartOption = EChartsOption & {
+export type ChartOption = EChartsOption & {
   yAxis?: EChartsOption['yAxis']
   series?: SeriesOption[]
 }

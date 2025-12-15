@@ -5,6 +5,7 @@ import StackedAreaLine from './components/StackedAreaLine'
 import MultiLine from './components/MultiLine'
 import StepLine from './components/StepLine'
 import DualColorLine from './components/DualColorLine'
+import CurveLine from './components/CurveLine'
 
 function LineChart() {
   return (
@@ -20,6 +21,9 @@ function LineChart() {
         <MultiLine />
         <StepLine />
         <DualColorLine />
+        <div className="col-span-2">
+          <CurveLine />
+        </div>
       </div>
     </div>
   )

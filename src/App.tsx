@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Layout, Spin } from 'antd'
 import { Outlet } from 'react-router'
 import MenuBar from './components/MenuBar'
+import AiAgent from './components/AiAgent'
 import './App.css'
 
 const { Content } = Layout
@@ -35,6 +36,7 @@ function App() {
           </div>
         </Content>
       </Layout>
+      <AiAgent />
     </Layout>
   )
 }
