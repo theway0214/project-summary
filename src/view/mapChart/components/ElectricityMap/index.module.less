@@ -1,0 +1,216 @@
+/**
+ * ElectricityMap 样式
+ * @author xhj
+ * @since 2025-12-16
+ */
+
+.container {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'OPPOSans-Bold';
+  z-index: 20;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.sliderWrapper {
+  position: absolute;
+  bottom: 15px;
+  left: 3%;
+  z-index: 11;
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  width: 133px;
+}
+
+.sliderLabels {
+  position: absolute;
+  top: 3px;
+  width: calc(100% - 20px);
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  font-weight: 500;
+  font-family: 'OPPOSans-Regular';
+  color: #ffffff;
+}
+
+.slider {
+  flex: 1;
+  margin-top: 18px;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(
+    to right,
+    #ee8254 0%,
+    #f8be29 var(--progress),
+    #445d7a var(--progress),
+    #445d7a 100%
+  );
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: var(--thumb-image) no-repeat center center;
+    background-size: 100% 100%;
+    cursor: pointer;
+    border: none;
+  }
+
+  &::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: var(--thumb-image) no-repeat center center;
+    background-size: 100% 100%;
+    cursor: pointer;
+    border: none;
+  }
+}
+
+.playBtn {
+  width: 11px;
+  height: 11px;
+  margin-left: 8px;
+  margin-top: 17px;
+  cursor: pointer;
+}
+
+.mapWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.mapBg {
+  position: absolute;
+  width: 623px;
+  height: 479px;
+  left: 55px;
+  top: 15px;
+  z-index: 9;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.legendWrapper {
+  position: absolute;
+  top: 25px;
+  left: 15px;
+  width: 120px;
+  height: 130px;
+  z-index: 12;
+}
+
+.legendList {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.legendIcon {
+  width: 37px;
+  height: 23px;
+}
+
+.legendText {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.legendName {
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  text-align: center;
+}
+
+.startText {
+  font-family: YouSheBiaoTiHei;
+  letter-spacing: 0px;
+  font-variation-settings: 'opsz' auto;
+  background: linear-gradient(180deg, #ffffff 0%, #3bb4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.planText {
+  font-family: YouSheBiaoTiHei;
+  letter-spacing: 0px;
+  font-variation-settings: 'opsz' auto;
+  background: linear-gradient(180deg, #ffffff 0%, #ffb03b 97%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.typeText {
+  font-family: OPPOSans-Regular;
+  font-size: 9px;
+  font-weight: bold;
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0em;
+  font-variation-settings: 'opsz' auto;
+  color: #faf4e8;
+  text-shadow: 0px 0.6px 0px rgba(0, 0, 0, 0.44);
+}
+
+.inActiveText {
+  font-family: YouSheBiaoTiHei;
+  color: gray;
+}
+
+.textColorGray {
+  color: gray;
+}
+
+.detailBg {
+  width: 154px;
+  height: 21px;
+  background: url('./assets/detail-change-bg.webp');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.detailText {
+  background: linear-gradient(180deg, #ffffff 0%, #ffd151 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

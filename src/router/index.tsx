@@ -43,6 +43,13 @@ export const routeMenuConfig: RouteMenuConfig[] = [
     component: LineChart,
     showInMenu: true,
   },
+  {
+    path:'/map-chart',
+    label:'地图',
+    icon:<BarChartOutlined />,
+    component:lazy(()=>import('../view/mapChart/index')),
+    showInMenu:true
+  }
 ]
 
 // 创建路由配置

@@ -1,0 +1,179 @@
+/**
+ * ElectricityPresentMap 样式
+ * @author xhj
+ * @since 2025-12-16
+ */
+
+.container {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'OPPOSans-Bold';
+  z-index: 20;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mapWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.mapBg {
+  position: absolute;
+  width: 621px;
+  height: 479px;
+  left: 19px;
+  top: 5px;
+  z-index: 9;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.legendWrapper {
+  position: absolute;
+  top: 25px;
+  left: 15px;
+  width: 150px;
+  height: 125px;
+  z-index: 12;
+}
+
+.legendList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 5px;
+}
+
+.legendItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 37px;
+  height: 54px;
+}
+
+.legendIcon {
+  width: 37px;
+  height: 23px;
+}
+
+.legendText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.legendName {
+  font-family: YouSheBiaoTiHei;
+  font-size: 10px;
+  font-weight: normal;
+  color: #fffaee;
+}
+
+.legendValue {
+  font-size: 10px;
+  font-weight: normal;
+  font-family: 'OPPOSans-Bold';
+  color: #faf4e8;
+  margin-top: -2px;
+}
+
+.inActiveText {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.popup {
+  position: absolute;
+  z-index: 15;
+  width: 37px;
+  height: 23px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+}
+
+.popupName {
+  width: 100%;
+  text-align: center;
+  font-family: 'OPPOSans-Regular';
+  font-weight: 500;
+  font-size: 9px;
+  color: #ffffff;
+  overflow: hidden;
+  height: 16px;
+  margin-top: -1px;
+}
+
+.detailBg {
+  width: 154px;
+  height: 21px;
+  background: url('./assets/detail-change-bg.webp');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.detailText {
+  background: linear-gradient(180deg, #ffffff 0%, #ffd151 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.startText {
+  font-family: YouSheBiaoTiHei;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  text-align: center;
+  letter-spacing: 0px;
+  font-variation-settings: 'opsz' auto;
+  background: linear-gradient(180deg, #ffffff 0%, #3bb4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.planText {
+  font-family: YouSheBiaoTiHei;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  text-align: center;
+  letter-spacing: 0px;
+  font-variation-settings: 'opsz' auto;
+  background: linear-gradient(180deg, #ffffff 0%, #ffb03b 97%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.typeText {
+  font-family: OPPOSans-Regular;
+  font-size: 9px;
+  font-weight: bold;
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0em;
+  font-variation-settings: 'opsz' auto;
+  color: #faf4e8;
+  text-shadow: 0px 0.6px 0px rgba(0, 0, 0, 0.44);
+}

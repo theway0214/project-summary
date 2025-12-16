@@ -1,0 +1,164 @@
+/**
+ * HotMapArea 区域热力图样式
+ * @author xhj
+ * @since 2025-12-16
+ */
+
+.container {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'OPPOSans-Bold';
+  z-index: 20;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mapWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.mapBg {
+  position: absolute;
+  width: 626px;
+  height: 477px;
+  left: 45px;
+  top: 30px;
+  z-index: 9;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.legendWrapper {
+  position: absolute;
+  bottom: 25px;
+  right: 20px;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeText {
+  font-family: 'OPPOSans';
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff;
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+.legendTitle {
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'OPPOSans-Regular';
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.legendContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.legendLabels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  font-family: 'OPPOSans-Regular';
+}
+
+.legendLabel {
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.legendBar {
+  width: 10px;
+  height: 140px;
+  opacity: 1;
+  background: linear-gradient(
+    180deg,
+    #065ffa 4%,
+    #02e22f 29%,
+    #8ad000 46%,
+    #e8cc12 61%,
+    #efa606 81%,
+    #f94141 100%
+  );
+  transform: rotate(180deg);
+  border-radius: 2px;
+}
+
+.legendBar2 {
+  width: 10px;
+  height: 140px;
+  opacity: 1;
+  transform: rotate(180deg);
+  background: linear-gradient(
+    180deg,
+    #0f3a30 0%,
+    #05ad83 25%,
+    #00fddc 46%,
+    #fd7b60 56%,
+    #f65b43 86%,
+    #f94141 100%
+  );
+  border-radius: 2px;
+}
+
+.tabWrapper {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tabItem {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: 'OPPOSans';
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(48, 140, 247, 0.5);
+    border-color: rgba(48, 140, 247, 0.8);
+  }
+}
+
+.tabActive {
+  background: rgba(48, 140, 247, 0.8);
+  border-color: #308cf7;
+}
