@@ -51,6 +51,13 @@ export function useChartOptions(data: LoadDataItem[]) {
     const yearLastTwo = data.filter((item) => item.data_time.includes((thisYear - 2).toString()))
     const yearLastTwoData = yearLastTwo.map((item) => item.maximum_load)
 
+    // 构建各年份日期映射，用于 tooltip 显示
+    const yearDataMap = {
+      [thisYear]: yearThis,
+      [thisYear - 1]: yearLast,
+      [thisYear - 2]: yearLastTwo,
+    }
+
     return {
       tooltip: {
         trigger: 'axis',
@@ -61,7 +68,34 @@ export function useChartOptions(data: LoadDataItem[]) {
             label: item.seriesName || '',
             value: item.value as number,
           })) as TooltipItem[]
-          const title = `第 ${paramList[0]?.name || ''} 天`
+
+          // 获取日期标题 - 只显示月日（因为是多年份对比）
+          let title = ''
+          const first = paramList[0]
+          const dataIndex = first?.dataIndex
+          if (dataIndex !== undefined) {
+            // 优先使用当前指向的系列年份，避免跨系列索引偏移
+            const seriesYear = typeof first?.seriesName === 'string' ? Number(first.seriesName.replace('年', '')) : NaN
+            const targetList = yearDataMap[seriesYear as keyof typeof yearDataMap]
+            let dateItem: LoadDataItem | undefined
+            if (Array.isArray(targetList)) {
+              dateItem = targetList[dataIndex]
+            }
+            // 兜底：继续遍历其他年份
+            if (!dateItem) {
+              for (const y of [thisYear, thisYear - 1, thisYear - 2]) {
+                const lst = yearDataMap[y]
+                if (Array.isArray(lst) && lst[dataIndex]) {
+                  dateItem = lst[dataIndex]
+                  break
+                }
+              }
+            }
+            if (dateItem) {
+              title = formatDate(dateItem.data_time, 'M月D日')
+            }
+          }
+
           return createTooltipContainer(title, list)
         },
       },
@@ -204,6 +238,7 @@ export function useChartOptions(data: LoadDataItem[]) {
             silent: true,
             symbol: `image://${curveSymbolLeft}`,
             symbolSize: [220, 50],
+            symbolOffset: [-105, -22],
             data: [
               {
                 type: 'max',
@@ -213,7 +248,7 @@ export function useChartOptions(data: LoadDataItem[]) {
             label: {
               fontSize: 10,
               position: 'inside' as const,
-              offset: [0, -2],
+              offset: [-30, -2],
               align: 'center',
               verticalAlign: 'middle',
               fontFamily: 'OPPOSans-Bold',
@@ -257,7 +292,7 @@ export function useChartOptions(data: LoadDataItem[]) {
             silent: true,
             symbol: `image://${curveSymbolRight}`,
             symbolSize: [220, 50],
-            symbolOffset: [0, -30],
+            symbolOffset: [105, -22],
             data: [
               {
                 type: 'max',
@@ -267,7 +302,7 @@ export function useChartOptions(data: LoadDataItem[]) {
             label: {
               fontSize: 10,
               position: 'inside' as const,
-              offset: [0, -2],
+              offset: [30, -2],
               align: 'center',
               verticalAlign: 'middle',
               fontFamily: 'OPPOSans-Bold',

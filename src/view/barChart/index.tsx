@@ -6,6 +6,7 @@ import RoundedBar from './components/RoundedBar'
 import NegativeBar from './components/NegativeBar'
 import PolarBar from './components/PolarBar'
 import RankBar from './components/RankBar'
+import StackedBar1 from './components/StackedBar1'
 
 function BarChart() {
   return (
@@ -22,6 +23,7 @@ function BarChart() {
         <NegativeBar />
         <PolarBar />
         <RankBar />
+        <StackedBar1 />
       </div>
     </div>
   )
