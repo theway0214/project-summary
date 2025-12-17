@@ -111,3 +111,27 @@ export const lightPlanData: MapDataItem[] = [
   { name: '光伏项目9', lng: 107.78546857487245, lat: 29.4617819758727, value: 130, year: 2022 },
   { name: '光伏项目10', lng: 109.41549318211645, lat: 30.654210199067748, value: 110, year: 2025 },
 ]
+
+// 渝中区坐标（重庆市中心）
+export const YUZHONG_CENTER = [106.569, 29.557]
+
+// 飞线数据：从渝中区到各区县
+export interface FlyLineData {
+  name: string // 目标区县名称
+  coords: [[number, number], [number, number]] // [起点坐标, 终点坐标]
+}
+
+export const flyLineData: FlyLineData[] = [
+  { name: '渝北区', coords: [YUZHONG_CENTER as [number, number], [106.631, 29.718]] },
+  { name: '江北区', coords: [YUZHONG_CENTER as [number, number], [106.574, 29.606]] },
+  { name: '南岸区', coords: [YUZHONG_CENTER as [number, number], [106.644, 29.523]] },
+  { name: '九龙坡区', coords: [YUZHONG_CENTER as [number, number], [106.481, 29.502]] },
+  { name: '沙坪坝区', coords: [YUZHONG_CENTER as [number, number], [106.456, 29.541]] },
+  { name: '大渡口区', coords: [YUZHONG_CENTER as [number, number], [106.482, 29.484]] },
+  { name: '北碚区', coords: [YUZHONG_CENTER as [number, number], [106.437, 29.825]] },
+  { name: '巴南区', coords: [YUZHONG_CENTER as [number, number], [106.519, 29.402]] },
+  { name: '万州区', coords: [YUZHONG_CENTER as [number, number], [108.408, 30.807]] },
+  { name: '涪陵区', coords: [YUZHONG_CENTER as [number, number], [107.394, 29.703]] },
+  { name: '黔江区', coords: [YUZHONG_CENTER as [number, number], [108.782, 29.533]] },
+  { name: '永川区', coords: [YUZHONG_CENTER as [number, number], [105.927, 29.356]] },
+]

@@ -7,6 +7,7 @@ import StepLine from './components/StepLine'
 import DualColorLine from './components/DualColorLine'
 import CurveLine from './components/CurveLine'
 import FlowLine from './FlowLine'
+import  OutputAnalysis from './components/OutputAnalysis/index'
 
 function LineChart() {
   return (
@@ -23,6 +24,7 @@ function LineChart() {
         <StepLine />
         <DualColorLine />
         <FlowLine />
+        <OutputAnalysis/>
         <div className="col-span-3">
           <CurveLine />
         </div>

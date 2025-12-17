@@ -1,0 +1,75 @@
+.hasNotValidatorClass {
+  margin-bottom: 0;
+}
+
+.isEmbeddedClass :global(.ant-form-item-control-input-content) {
+  border-radius: 8px;
+  border: 1px solid #dadada;
+  padding-left: 15px;
+  display: flex;
+}
+
+.isEmbeddedClass :global(.ant-form-item-control-input-content) span {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.isEmbeddedClass :global(.ant-input-affix-wrapper),
+.isEmbeddedClass :global(.ant-select:not(.ant-select-customize-input) .ant-select-selector),
+.isEmbeddedClass :global(textarea.ant-input),
+.isEmbeddedClass :global(.ant-picker-range),
+.isEmbeddedClass :global(.ant-picker) {
+  border: none;
+  padding: 0;
+}
+
+.isEmbeddedClass :global(.ant-input-suffix) {
+  padding-right: 10px;
+}
+
+.isEmbeddedClass :global(.ant-picker) {
+  padding-right: 15px;
+}
+
+.isEmbeddedClass :global(.ant-select-selector) {
+  box-shadow: none !important;
+}
+
+.isEmbeddedClass :global(.ant-select-selection-item) {
+  width: 0;
+}
+
+.isEmbeddedClass :global(.ant-select-selection-item),
+.isEmbeddedClass :global(.ant-select-selection-placeholder) {
+  padding-right: 35px;
+}
+
+.isEmbeddedClass :global(.ant-select-selection-search) {
+  inset-inline-start: 0;
+}
+
+.isEmbeddedClass :global(.ant-select-selection-search > input) {
+  margin-right: 20px;
+}
+
+:global(.ant-space-item) {
+  display: flex;
+}
+
+:global(.ant-form-item-control-input-content) {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  min-height: 40px;
+}
+
+:global(.ant-input-textarea) {
+  width: 100%;
+}
+
+:global(.ant-space) {
+  overflow: auto;
+}
+
+

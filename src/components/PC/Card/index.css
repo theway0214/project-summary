@@ -1,0 +1,29 @@
+.pc-card :global(.ant-card-head) {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  min-height: 0;
+  position: relative;
+}
+
+.pc-card :global(.ant-card-head-title),
+.pc-card .header {
+  height: 50px;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  width: 100%;
+}
+
+.pc-card :global(.ant-card-body) {
+  padding: 0;
+}
+
+.pc-card-body-box {
+  padding: 10px;
+}
+
+

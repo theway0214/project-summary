@@ -7,7 +7,7 @@ import { useMemo } from 'react'
 import * as echarts from 'echarts'
 
 import China_bg from '@/assets/img/mapImg/china_dark_blue.webp'
-import { lightStartData, lightPlanData, windStartData, windPlanData } from './mockData'
+import { lightStartData, lightPlanData, windStartData, windPlanData, flyLineData, YUZHONG_CENTER } from './mockData'
 
 import windStartIcon from './assets/wind-start.webp'
 import windPlanIcon from './assets/wind-plan.webp'
@@ -221,6 +221,97 @@ export function useChartOptions({ currentData, currentSelect }: UseChartOptionsP
                 symbolSize: [40, 31],
               }
             }),
+        },
+        // 渝中区中心标记点
+        {
+          name: '渝中区中心',
+          type: 'scatter',
+          coordinateSystem: 'geo',
+          z: 9,
+          data: [
+            {
+              name: '渝中区',
+              value: [...YUZHONG_CENTER, 100],
+              itemStyle: {
+                color: '#FFD700',
+                shadowBlur: 10,
+                shadowColor: '#FFD700',
+              },
+              symbol: 'circle',
+              symbolSize: 15,
+            },
+          ],
+        },
+        // 飞线系列 - 主线
+        {
+          name: '飞线',
+          type: 'lines',
+          coordinateSystem: 'geo',
+          z: 10,
+          effect: {
+            show: true,
+            period: 4,
+            trailLength: 0.1,
+            symbol: 'arrow',
+            symbolSize: 6,
+            color: '#00FFFF',
+          },
+          lineStyle: {
+            color: '#00FFFF',
+            width: 1,
+            opacity: 0.6,
+            curveness: 0.3,
+          },
+          data: flyLineData.map((item) => ({
+            name: item.name,
+            coords: item.coords,
+          })),
+        },
+        // 飞线系列 - 光晕效果
+        {
+          name: '飞线光晕',
+          type: 'lines',
+          coordinateSystem: 'geo',
+          z: 9,
+          effect: {
+            show: false,
+          },
+          lineStyle: {
+            color: '#00FFFF',
+            width: 3,
+            opacity: 0.2,
+            curveness: 0.3,
+            shadowBlur: 10,
+            shadowColor: '#00FFFF',
+          },
+          data: flyLineData.map((item) => ({
+            name: item.name,
+            coords: item.coords,
+          })),
+        },
+        // 目标区县标记点
+        {
+          name: '目标区县',
+          type: 'scatter',
+          coordinateSystem: 'geo',
+          z: 11,
+          symbol: 'pin',
+          symbolSize: 30,
+          data: flyLineData.map((item) => ({
+            name: item.name,
+            value: [...item.coords[1], 100],
+            itemStyle: {
+              color: '#FF6B6B',
+            },
+            label: {
+              show: true,
+              position: 'top',
+              formatter: '{b}',
+              color: '#FFFFFF',
+              fontSize: 10,
+              distance: 5,
+            },
+          })),
         },
       ],
     }

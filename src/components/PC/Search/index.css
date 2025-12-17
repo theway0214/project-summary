@@ -1,0 +1,18 @@
+.pc-search-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  line-height: 42px;
+  transition: all 0.5s;
+}
+
+.pc-search-not-expand {
+  height: 42px;
+  overflow: hidden;
+}
+
+.pc-search-transition {
+  transition: all 0.5s;
+}
+
+

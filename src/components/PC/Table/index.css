@@ -1,0 +1,26 @@
+.pc-table-link {
+  cursor: pointer;
+  color: #1890ff;
+}
+
+.pc-table-link:hover {
+  text-decoration: underline;
+}
+
+/* 滚动条样式，来自原 Vue 版 less */
+:global(.ant-table-wrapper)::-webkit-scrollbar {
+  width: 0 !important;
+  height: 10px !important;
+  background-color: #f4f5f9 !important;
+}
+
+:global(.ant-table-wrapper)::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+:global(.ant-table-wrapper)::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+

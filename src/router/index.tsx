@@ -49,6 +49,19 @@ export const routeMenuConfig: RouteMenuConfig[] = [
     icon:<BarChartOutlined />,
     component:lazy(()=>import('../view/mapChart/index')),
     showInMenu:true
+  },
+  {
+    path:'/pie-chart',
+    label:'饼图',
+    icon:<BarChartOutlined />,
+    component:lazy(()=>import('../view/pieChart/index')),
+    showInMenu:true
+  },{
+    path:'/pc-component-demo',
+    label:'PC组件示例',
+    icon:<BarChartOutlined />,
+    component:lazy(()=>import('../view/pcComponentDemo/index')),
+    showInMenu:true
   }
 ]
 
